@@ -21,19 +21,19 @@ sublime text, atom, vs code
 pycharm
 '''
 
-def towers(discs, orig, dest, using):
+def towers(discs, orig="A", dest="C", using="B"):
 	statement = 'move {} to {}'
 	if discs == 0:
 		return
 	if discs == 1:
 		print(statement.format(orig, dest))
-	if discs == 2:
-		print(statement.format(orig, using))
+#	if discs == 2:
+#		print(statement.format(orig, using))
+#		print(statement.format(orig, dest))
+#		print(statement.format(using, dest))
+	if discs >= 2:
+		towers(discs-1, orig, using, dest)
 		print(statement.format(orig, dest))
-		print(statement.format(using, dest))
-	if discs >= 3:
-		towers(discs-1, orig, dest, using)
-		print(statement.format(orig, dest))
-		towers(discs-1, using, orig, dest)
+		towers(discs-1, using, dest, orig)
 
-towers(4, "A", "C", "B")
+towers(5)
